@@ -1,0 +1,132 @@
+<PRPM_IN403010UV01 xmlns="urn:hl7-org:v3"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ITSVersion="XML_1.0">
+    <id root="2.16.156.10011.2.5.1.1" extension="7b388bd9-2746-40c7-8f93-e3d82c43e925"/>
+    <creationTime value="20230329151044"/>
+    <interactionId root="2.16.840.1.113883.1.6" extension="PRPM_IN403010UV01"/>
+    <processingCode code="P"/>
+    <processingModeCode/>
+    <acceptAckCode code="AL"/>
+    <receiver typeCode="RCV">
+        <telecom/>
+        <device classCode="DEV" determinerCode="INSTANCE">
+            <id>
+                <item root="2.16.156.10011.0.1.1" extension=""/>
+            </id>
+        </device>
+    </receiver>
+    <sender typeCode="SND">
+        <telecom/>
+        <device classCode="DEV" determinerCode="INSTANCE">
+            <id>
+                <item root="2.16.156.10011.0.1.2" extension=""/>
+            </id>
+        </device>
+    </sender>
+    <controlActProcess classCode="CACT" moodCode="EVN">
+        <code code="PRPM_IN403010UV01" codeSystem="2.16.840.1.113883.1.6"/>
+        <subject typeCode="SUBJ">
+            <registrationRequest classCode="REG" moodCode="RQO">
+                <statusCode code="active"/>
+                <subject1 typeCode="SBJ">
+                    <assignedEntity classCode="ASSIGNED ">                        <!--医疗卫生机构（科室）标识-科室-->
+                        <id>
+                            <item root="2.16.156.10011.1.26" extension="123982"/>
+                        </id>                        <!--医疗卫生机构（科室）类别-科室-->
+                        <code code="1101335" codeSystem="2.16.156.10011.2.3.2.62" codeSystemName="医疗卫生机构业务科室分类与代码表">
+                            <displayName value="接口测试"/>
+                            <!--部门性质类别-->
+                            <translation value="部门性质">
+                                <translation value="A">
+                                    <displayName value="卫材库"/>
+                                </translation>
+                            </translation>                            <!--2019-09-02 lw 新增 药品物流接口:病区标识-->
+                            <translation value="病区标识">
+                                <displayName value=""/>
+                            </translation>
+                        </code>                        <!--医疗卫生机构（科室）角色名称-->
+                        <name xsi:type="LIST_EN">
+                            <item>
+                                <part value=""/>
+                            </item>
+                        </name>                        <!--工作地址-->
+                        <addr xsi:type="DSET_AD"></addr>                        <!--工作联系方式：电话、邮箱地址等-->
+                        <telecom xsi:type="DSET_TEL">
+                            <item value=""/>
+                        </telecom>                        <!--角色状态 RoleStatus-->
+                        <statusCode code="active"/>
+                        <!--角色有效期间-->
+                        <effectiveTime>
+                            <low value="20230328142628"/>
+                            <high value="30000101000000"/>
+                        </effectiveTime>
+                        <assignedPrincipalOrganization classCode="ORG" determinerCode="INSTANCE">                            <!--医疗卫生机构（科室）实体名称-->
+                            <name xsi:type="LIST_EN">
+                                <item>
+                                    <part value="接口测试"/>
+                                </item>
+                            </name>
+                            <asAffiliate classCode="AFFL">
+                                <code/>
+                                <effectiveTime/>
+                                <!--上级机构-->
+                                <affiliatedPrincipalOrganization classCode="ORG" determinerCode="INSTANCE">                                    <!--上级医疗卫生机构（科室）标识-->
+                                    <id>
+                                        <item root="2.16.156.10011.1.26" extension="21"/>
+                                    </id>
+                                    <name xsi:type="LIST_EN">
+                                        <item>
+                                            <part value="行政后勤"/>
+                                        </item>
+                                    </name>
+                                </affiliatedPrincipalOrganization>
+                            </asAffiliate>
+                        </assignedPrincipalOrganization>                        <!-- 20201204 扩展：申请机构信息，院外信息交互 -->
+                        <representedOrganization determinerCode="INSTANCE" classCode="ORG">                            <!--申请机构编码 必须项已使用 -->
+                            <id>
+                                <item extension="31450305-7" root="2.16.156.10011.1.5"/>
+                            </id>                            <!--申请机构名称 -->
+                            <name xsi:type="BAG_EN">
+                                <item>
+                                    <part value="某某医院"/>
+                                </item>
+                            </name>
+                        </representedOrganization>
+                    </assignedEntity>
+                </subject1>
+                <author typeCode="AUT">
+                    <assignedEntity classCode="ASSIGNED">                        <!--医务人员 ID-->
+                        <id>
+                            <item root="2.16.156.10011.1.4" extension="640"/>
+                        </id>
+                        <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                            <name xsi:type="LIST_EN">
+                                <item>
+                                    <part value="系统管理员"/>
+                                </item>
+                            </name>
+                        </assignedPerson>
+                        <representedOrganization classCode="ORG" determinerCode="INSTANCE">                            <!--科室号标识-->
+                            <id>
+                                <item root="2.16.156.10011.1.26" extension="1503"/>
+                            </id>
+                            <name xsi:type="LIST_EN">
+                                <item>
+                                    <part value="普儿科"/>
+                                </item>
+                            </name>
+                            <contactParty classCode="CON">
+                                <contactPerson classCode="PSN" determinerCode="INSTANCE">
+                                    <name xsi:type="LIST_EN">
+                                        <item>
+                                            <part value=""/>
+                                        </item>
+                                    </name>
+                                </contactPerson>
+                            </contactParty>
+                        </representedOrganization>
+                    </assignedEntity>
+                </author>
+            </registrationRequest>
+        </subject>
+    </controlActProcess>
+</PRPM_IN403010UV01>
