@@ -114,6 +114,57 @@ namespace HL7parser.v3
         }
 
         /// <summary>
+        /// 根据mappers将节点值赋值给obj
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <exception cref="KeyNotFoundException"></exception>
+        public virtual void DoMapper<T>(T obj) where T : class
+        {
+            var properties = obj.GetType().GetProperties();
+            foreach (var property in properties)
+            {
+                var fieldName = property.Name;
+                var mapper = Attribute.GetCustomAttribute(property, typeof(HL7v3Attribute)) as HL7v3Attribute;
+                if (mapper == null)
+                {
+                    continue;
+                }
+                var node = _xmlDocument.DocumentElement.SelectSingleNodeExt(mapper.XPath, "x", _xmlNamespaceManager);
+                if (mapper.IsRequired && node == null)
+                {
+                    throw new KeyNotFoundException($"xml节点不存在：{fieldName}");
+                }
+                var value = node?.InnerText;
+                if (mapper.IsRequired && string.IsNullOrWhiteSpace(value))
+                {
+                    throw new KeyNotFoundException($"xml节点内容为空：{fieldName}");
+                }
+                switch (mapper.DestType)
+                {
+                    case MapType.TString:
+                        property.SetValue(obj, value);
+                        break;
+                    case MapType.TDecimal:
+                        decimal? dv = string.IsNullOrWhiteSpace(value) ? null : decimal.Parse(value);
+                        property.SetValue(obj, dv);
+                        break;
+                    case MapType.TTime:
+                        DateTime? tv = string.IsNullOrWhiteSpace(value) ? null : GetTime(value);
+                        property.SetValue(obj, tv);
+                        break;
+                    case MapType.TDate:
+                        DateTime? dtv = string.IsNullOrWhiteSpace(value) ? null : GetDate(value);
+                        property.SetValue(obj, dtv);
+                        break;
+                    default:
+                        property.SetValue(obj, value);
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
         /// 获取单个值-字符串
         /// </summary>
         /// <param name="xpath"></param>
