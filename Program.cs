@@ -14,7 +14,12 @@ HL7v3Mapper deptMapper = new HL7v3Mapper()
         .Add(nameof(DeptDto.DeptCode), DeptDto.DeptCode_Xpath)
         .Add(nameof(DeptDto.DeptName), DeptDto.DeptName_Xpath)
         .Add(nameof(DeptDto.DeptType), DeptDto.DeptType_Xpath, isRequired: false)
-        .Add(nameof(DeptDto.ParentDeptCode), DeptDto.ParentDeptCode_Xpath, isRequired: false);
+        .Add(nameof(DeptDto.ParentDeptCode), DeptDto.ParentDeptCode_Xpath, isRequired: false, destType: MapType.TString
+        , p =>
+        {
+            var output = DeptDto.HandlerData(p);
+            return output;
+        });
 for (var i = 0; i < count; i++)
 {
     HL7v3Parser v3Parser = new HL7v3Parser();

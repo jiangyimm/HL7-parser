@@ -88,6 +88,10 @@ namespace HL7parser.v3
                     {
                         throw new KeyNotFoundException($"xml节点内容为空：{mapper.FieldName}");
                     }
+                    if (mapper.Handler != null)
+                    {
+                        value = mapper.Handler.Invoke(value);
+                    }
                     switch (mapper.DestType)
                     {
                         case MapType.TString:

@@ -14,11 +14,17 @@ namespace HL7parser.dto
         public string DeptName { get; set; }
         [HL7v3(xpath: DeptType_Xpath, isRequired: false)]
         public string DeptType { get; set; }
-        [HL7v3(xpath: ParentDeptCode_Xpath, isRequired: false)]
+        [HL7v3(xpath: ParentDeptCode_Xpath, isRequired: false]
         public string ParentDeptCode { get; set; }
         public override string ToString()
         {
             return $"deptCode:{DeptCode},deptName:{DeptName},deptType:{DeptType},parentDeptCode:{ParentDeptCode}";
         }
+
+        public static string HandlerData(string input)
+        {
+            return "哈哈哈" + input + "哦哦哦";
+        }
     }
+
 }

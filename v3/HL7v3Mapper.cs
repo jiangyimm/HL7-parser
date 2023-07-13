@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace HL7parser.v3
 {
     public class HL7v3Mapper
@@ -11,9 +13,9 @@ namespace HL7parser.v3
             _mappers = new List<MapModel>();
         }
 
-        public HL7v3Mapper Add(string fieldName, string xmlPath, bool isRequired, MapType destType)
+        public HL7v3Mapper Add(string fieldName, string xmlPath, bool isRequired, MapType destType, [AllowNull] Func<dynamic, dynamic> handler = null)
         {
-            _mappers.Add(new MapModel(fieldName, xmlPath, isRequired, destType));
+            _mappers.Add(new MapModel(fieldName, xmlPath, isRequired, destType, handler));
             return this;
         }
         /// <summary>
@@ -56,12 +58,13 @@ namespace HL7parser.v3
 
     public struct MapModel
     {
-        public MapModel(string fieldName, string xmlPath, bool isRequired, MapType destType)
+        public MapModel(string fieldName, string xmlPath, bool isRequired, MapType destType, [AllowNull] Func<dynamic, dynamic> handler)
         {
             FieldName = fieldName;
             XmlPath = xmlPath;
             IsRequired = isRequired;
             DestType = destType;
+            Handler = handler;
         }
         /// <summary>
         /// 字段名称
@@ -79,5 +82,8 @@ namespace HL7parser.v3
         /// 目标数据类型
         /// </summary>
         public MapType DestType { get; }
+
+        [AllowNull]
+        public Func<dynamic, dynamic> Handler { get; }
     }
 }
