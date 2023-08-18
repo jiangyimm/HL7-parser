@@ -51,20 +51,14 @@ public class Component
 
                     foreach (string strSubComponent in AllSubComponents)
                     {
-                        SubComponent subComponent = new SubComponent
-                        {
-                            Value = strSubComponent
-                        };
+                        SubComponent subComponent = new SubComponent(strSubComponent);
                         SubComponentList.Add(subComponent);
                     }
                 }
                 else
                 {
                     SubComponentList = new List<SubComponent>();
-                    SubComponent subComponent = new SubComponent
-                    {
-                        Value = _Value
-                    };
+                    SubComponent subComponent = new SubComponent(_Value);
                     SubComponentList.Add(subComponent);
                 }
             }

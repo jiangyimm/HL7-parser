@@ -17,7 +17,7 @@ var msg = @"MSH|^~\&|ADT|ADI|ADT-1|ADI-1|20050215||ADT^A01|MSGADT003|T|2.4" + "\
                              "IN1|2|I456|ICOMP2|INS COMP 1|PO BOX 2^^Lake City^WA^98125||||||||||8|John^Smith|01|19380818" + "\r" +
                              "IN2|2||RETIRED" + "\r";
 var hl7v2 = new Message(msg);
-hl7v2.ParseMessage();
+var isParsed = hl7v2.ParseMessage();
 List<Segment> segList = hl7v2.Segments();
 //获取PID里面的姓名
 var patName = hl7v2.getValue("PID.5");

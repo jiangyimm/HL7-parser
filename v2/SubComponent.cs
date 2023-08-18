@@ -1,31 +1,16 @@
 namespace HL7parser.v2;
 public class SubComponent
 {
-    private string _Value;
-
-    public SubComponent()
-    {
-    }
-
+    private string _value;
     public SubComponent(string pValue)
     {
-        _Value = pValue;
+        _value = pValue ?? string.Empty;
     }
 
-    public string Value
+    public void SetValue(string pValue)
     {
-        get
-        {
-            if (_Value == null)
-                return string.Empty;
-            else
-                return _Value;
-        }
-        set
-        {
-            _Value = value;
-
-        }
+        _value = pValue ?? string.Empty;
     }
 
+    public string Value => _value;
 }

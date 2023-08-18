@@ -654,7 +654,7 @@ public class Message
 
                     try
                     {
-                        SegmentList[segmentName].FieldList[fieldIndex - 1].ComponentList[componentIndex - 1].SubComponentList[subComponentIndex - 1].Value = strValue;
+                        SegmentList[segmentName].FieldList[fieldIndex - 1].ComponentList[componentIndex - 1].SubComponentList[subComponentIndex - 1].SetValue(strValue);
                         isSet = true;
                     }
                     catch (Exception ex)
