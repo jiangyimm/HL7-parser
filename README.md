@@ -28,7 +28,7 @@ hl7v3 parser example : use HL7v3Mapper
 ```CSharp
 
 decimal count = 1000;
-string v3xml = File.ReadAllText("v3xmlfile/OrganizationInfoRegister.xml");
+string v3xml = File.ReadAllText("v3/v3xmlfile/OrganizationInfoRegister.xml");
 
 Stopwatch stopWatch = Stopwatch.StartNew();
 HL7v3Mapper deptMapper = new HL7v3Mapper()
@@ -57,7 +57,7 @@ hl7v3 parser example : use HL7v3Attribute
 ```CSharp
 
 decimal count = 1000;
-string v3xml = File.ReadAllText("v3xmlfile/OrganizationInfoRegister.xml");
+string v3xml = File.ReadAllText("v3/v3xmlfile/OrganizationInfoRegister.xml");
 
 var stopWatch2 = Stopwatch.StartNew();
 for (var i = 0; i < count; i++)

@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Diagnostics;
-using HL7parser.dto;
 using HL7parser.v3;
+using HL7parser.v3.dto;
 using HL7parser.v2;
 
 Console.WriteLine("Hello, World!");
@@ -27,7 +27,7 @@ var isComponentized = hl7v2.IsComponentized("PID.5");
 #endregion
 
 decimal count = 1000;
-string v3xml = File.ReadAllText("v3xmlfile/OrganizationInfoRegister.xml");
+string v3xml = File.ReadAllText("v3/v3xmlfile/OrganizationInfoRegister.xml");
 
 #region  hl7v3 parser example : use HL7v3Mapper
 Stopwatch stopWatch = Stopwatch.StartNew();
