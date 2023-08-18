@@ -14,7 +14,7 @@ namespace HL7parser.dto
         public string DeptName { get; set; }
         [HL7v3(xpath: DeptType_Xpath, isRequired: false)]
         public string DeptType { get; set; }
-        [HL7v3(xpath: ParentDeptCode_Xpath, isRequired: false]
+        [HL7v3(xpath: ParentDeptCode_Xpath, isRequired: false)]
         public string ParentDeptCode { get; set; }
         public override string ToString()
         {
