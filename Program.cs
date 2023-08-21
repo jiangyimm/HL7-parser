@@ -20,10 +20,12 @@ var hl7v2 = new Message(msg);
 var isParsed = hl7v2.ParseMessage();
 List<Segment> segList = hl7v2.Segments();
 //获取PID里面的姓名
+var field = hl7v2.DefaultSegment("PID").Fields(5);
 var patName = hl7v2.getValue("PID.5");
 patName = hl7v2.DefaultSegment("PID").Fields(5).Value;
 patName = hl7v2.Segments("PID")[0].Fields(5).Value;
 var isComponentized = hl7v2.IsComponentized("PID.5");
+var ack = hl7v2.getACK();
 #endregion
 
 decimal count = 1000;
