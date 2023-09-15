@@ -1,4 +1,6 @@
-namespace HL7parser.v3.dto
+using HL7parser.v3;
+
+namespace test.v3.dto
 {
     public class DeptDto
     {

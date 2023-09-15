@@ -1,4 +1,6 @@
 using System.Xml;
+using System;
+using System.Collections.Generic;
 
 namespace HL7parser.v3
 {
@@ -98,15 +100,15 @@ namespace HL7parser.v3
                             property.SetValue(obj, value);
                             break;
                         case MapType.TDecimal:
-                            decimal? dv = string.IsNullOrWhiteSpace(value) ? null : decimal.Parse(value);
+                            decimal? dv = string.IsNullOrWhiteSpace(value) ? (decimal?)null : decimal.Parse(value);
                             property.SetValue(obj, dv);
                             break;
                         case MapType.TTime:
-                            DateTime? tv = string.IsNullOrWhiteSpace(value) ? null : GetTime(value);
+                            DateTime? tv = string.IsNullOrWhiteSpace(value) ? (DateTime?)null : GetTime(value);
                             property.SetValue(obj, tv);
                             break;
                         case MapType.TDate:
-                            DateTime? dtv = string.IsNullOrWhiteSpace(value) ? null : GetDate(value);
+                            DateTime? dtv = string.IsNullOrWhiteSpace(value) ? (DateTime?)null : GetDate(value);
                             property.SetValue(obj, dtv);
                             break;
                         default:
@@ -129,7 +131,7 @@ namespace HL7parser.v3
             foreach (var property in properties)
             {
                 var fieldName = property.Name;
-                var mapper = Attribute.GetCustomAttribute(property, typeof(HL7v3Attribute)) as HL7v3Attribute;
+                var mapper = (HL7v3Attribute)Attribute.GetCustomAttribute(property, typeof(HL7v3Attribute));
                 if (mapper == null)
                 {
                     continue;
@@ -150,15 +152,15 @@ namespace HL7parser.v3
                         property.SetValue(obj, value);
                         break;
                     case MapType.TDecimal:
-                        decimal? dv = string.IsNullOrWhiteSpace(value) ? null : decimal.Parse(value);
+                        decimal? dv = string.IsNullOrWhiteSpace(value) ? (decimal?)null : decimal.Parse(value);
                         property.SetValue(obj, dv);
                         break;
                     case MapType.TTime:
-                        DateTime? tv = string.IsNullOrWhiteSpace(value) ? null : GetTime(value);
+                        DateTime? tv = string.IsNullOrWhiteSpace(value) ? (DateTime?)null : GetTime(value);
                         property.SetValue(obj, tv);
                         break;
                     case MapType.TDate:
-                        DateTime? dtv = string.IsNullOrWhiteSpace(value) ? null : GetDate(value);
+                        DateTime? dtv = string.IsNullOrWhiteSpace(value) ? (DateTime?)null : GetDate(value);
                         property.SetValue(obj, dtv);
                         break;
                     default:
@@ -193,7 +195,7 @@ namespace HL7parser.v3
         public virtual decimal? GetSingleDecimalValue(string xpath, bool isEnableNull = false)
         {
             var value = GetSingleValue(xpath, isEnableNull);
-            return string.IsNullOrWhiteSpace(value) ? null : decimal.Parse(value);
+            return string.IsNullOrWhiteSpace(value) ? (decimal?)null : decimal.Parse(value);
         }
 
         /// <summary>
@@ -205,7 +207,7 @@ namespace HL7parser.v3
         public virtual DateTime? GetSingleTimeValue(string xpath, bool isEnableNull = false)
         {
             var value = GetSingleValue(xpath, isEnableNull);
-            return string.IsNullOrWhiteSpace(value) ? null : GetTime(value);
+            return string.IsNullOrWhiteSpace(value) ? (DateTime?)null : GetTime(value);
         }
 
         /// <summary>
@@ -217,7 +219,7 @@ namespace HL7parser.v3
         public virtual DateTime? GetSingleDateValue(string xpath, bool isEnableNull = false)
         {
             var value = GetSingleValue(xpath, isEnableNull);
-            return string.IsNullOrWhiteSpace(value) ? null : GetDate(value);
+            return string.IsNullOrWhiteSpace(value) ? (DateTime?)null : GetDate(value);
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
-using System.Diagnostics.CodeAnalysis;
+using System;
+using System.Collections.Generic;
 
 namespace HL7parser.v3
 {
@@ -13,7 +14,7 @@ namespace HL7parser.v3
             _mappers = new List<MapModel>();
         }
 
-        public HL7v3Mapper Add(string fieldName, string xmlPath, bool isRequired, MapType destType, [AllowNull] Func<dynamic, dynamic> handler = null)
+        public HL7v3Mapper Add(string fieldName, string xmlPath, bool isRequired, MapType destType, Func<string, string> handler = null)
         {
             _mappers.Add(new MapModel(fieldName, xmlPath, isRequired, destType, handler));
             return this;
@@ -58,7 +59,7 @@ namespace HL7parser.v3
 
     public struct MapModel
     {
-        public MapModel(string fieldName, string xmlPath, bool isRequired, MapType destType, [AllowNull] Func<dynamic, dynamic> handler)
+        public MapModel(string fieldName, string xmlPath, bool isRequired, MapType destType, Func<string, string> handler)
         {
             FieldName = fieldName;
             XmlPath = xmlPath;
@@ -82,8 +83,6 @@ namespace HL7parser.v3
         /// 目标数据类型
         /// </summary>
         public MapType DestType { get; }
-
-        [AllowNull]
-        public Func<dynamic, dynamic> Handler { get; }
+        public Func<string, string> Handler { get; }
     }
 }

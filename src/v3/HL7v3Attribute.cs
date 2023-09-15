@@ -1,3 +1,5 @@
+using System;
+
 namespace HL7parser.v3
 {
     public class HL7v3Attribute : Attribute

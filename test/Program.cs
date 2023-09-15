@@ -1,8 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Diagnostics;
-using HL7parser.v3;
-using HL7parser.v3.dto;
 using HL7parser.v2;
+using HL7parser.v3;
+using test.v3.dto;
 
 Console.WriteLine("Hello, World!");
 
