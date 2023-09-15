@@ -1,0 +1,3 @@
+ dotnet pack --configuration Release
+ 
+ dotnet nuget push bin/Release/HL7-parser.1.0.0.nupkg --api-key oy2itmqdmf5z7rs6nipqxgkoeol4t3lexhlgnd6cznw67i --source https://api.nuget.org/v3/index.json
